@@ -139,6 +139,8 @@ def train(args):
         max_norm=args.max_norm,
         max_epochs=args.max_epochs,
         loss=args.loss,
+        disable_ds_ckpt=args.disable_ds_ckpt,
+        save_hf_ckpt=args.save_hf_ckpt,
     )
 
     trainer.fit(args, consumed_samples, num_update_steps_per_epoch)
@@ -165,6 +167,8 @@ if __name__ == "__main__":
     parser.add_argument("--max_ckpt_mem", type=int, default=1e8)
     parser.add_argument("--load_checkpoint", action="store_true", default=False)
     parser.add_argument("--use_ds_universal_ckpt", action="store_true", default=False)
+    parser.add_argument("--disable_ds_ckpt", action="store_true", default=False)
+    parser.add_argument("--save_hf_ckpt", action="store_true", default=False)
 
     # DeepSpeed
     parser.add_argument("--max_norm", type=float, default=1.0, help="Gradient clipping")
